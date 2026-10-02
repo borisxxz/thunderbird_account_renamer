@@ -50,4 +50,4 @@ jobs:
         if: ${{ env.CNB_TOKEN != '' }}
         run: |
           git remote add cnb "https://cnb:${CNB_TOKEN}@cnb.cool/boris007/thunderbird_account_renamer.git"
-          git push cnb HEAD:main --tags
+          git push cnb HEAD:main --tags --force
