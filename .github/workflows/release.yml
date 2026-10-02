@@ -1,0 +1,50 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Package zip
+        run: npx --yes web-ext@8 build
+
+      - name: Read version
+        id: ver
+        run: echo "version=$(node -p "require('./manifest.json').version")" >> "$GITHUB_OUTPUT"
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ steps.ver.outputs.version }}
+          files: web-ext-artifacts/*.zip
+          generate_release_notes: true
+
+  # Mirror code + tags to CNB; its tag_push pipeline then publishes the CNB
+  # release. Requires the CNB_TOKEN secret; skipped while unconfigured.
+  sync-cnb:
+    needs: build
+    runs-on: ubuntu-latest
+    if: ${{ secrets.CNB_TOKEN != '' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push to CNB mirror
+        env:
+          CNB_TOKEN: ${{ secrets.CNB_TOKEN }}
+        run: |
+          git remote add cnb "https://boris007:${CNB_TOKEN}@cnb.cool/boris007/thunderbird_account_renamer.git"
+          git push cnb main --tags

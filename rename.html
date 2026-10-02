@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Account F2 Renamer</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font: 13px system-ui, sans-serif;
+      margin: 0;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-sizing: border-box;
+      height: 100vh;
+      background: Canvas;
+      color: CanvasText;
+    }
+    label { font-weight: 600; }
+    input {
+      font: inherit;
+      padding: 6px 8px;
+      border: 1px solid color-mix(in srgb, CanvasText 30%, transparent);
+      border-radius: 6px;
+      background: Canvas;
+      color: CanvasText;
+    }
+    input:focus { outline: 2px solid Highlight; outline-offset: -1px; }
+    .row { display: flex; gap: 8px; justify-content: flex-end; margin-top: auto; }
+    button {
+      font: inherit;
+      padding: 6px 16px;
+      border-radius: 6px;
+      border: 1px solid color-mix(in srgb, CanvasText 30%, transparent);
+      background: Canvas;
+      color: CanvasText;
+      cursor: pointer;
+    }
+    button.primary { background: #4f46e5; border-color: #4f46e5; color: #fff; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    #error { color: #dc2626; min-height: 1em; margin: 0; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <label for="name-input" id="label"></label>
+  <input id="name-input" type="text" autocomplete="off">
+  <p id="error"></p>
+  <div class="row">
+    <button id="cancel"></button>
+    <button id="save" class="primary"></button>
+  </div>
+  <script src="rename.js"></script>
+</body>
+</html>

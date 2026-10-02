@@ -1,0 +1,25 @@
+[
+  {
+    "namespace": "AccountManager",
+    "functions": [
+      {
+        "name": "renameAccount",
+        "type": "function",
+        "description": "Renames the display name of an account.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "accountId",
+            "type": "string",
+            "description": "The id of the account to rename."
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "The new display name."
+          }
+        ]
+      }
+    ]
+  }
+]

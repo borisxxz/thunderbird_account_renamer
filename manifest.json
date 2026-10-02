@@ -1,0 +1,46 @@
+{
+  "manifest_version": 2,
+  "name": "Account F2 Renamer",
+  "version": "0.0.1",
+  "description": "Press F2 or right-click in the folder pane to rename an account's display name, rename folders, or copy the account's email address.",
+  "author": "borisxxz",
+  "homepage_url": "https://github.com/borisxxz/thunderbird_account_renamer",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": [
+    "accountsRead",
+    "accountsFolders",
+    "menus",
+    "clipboardWrite",
+    "notifications"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "commands": {
+    "rename-account": {
+      "suggested_key": { "default": "F2" },
+      "description": "Rename the selected account"
+    }
+  },
+  "experiment_apis": {
+    "AccountManager": {
+      "schema": "api/AccountManager/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["AccountManager"]],
+        "script": "api/AccountManager/implementation.js"
+      }
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "account-f2-renamer@borisxxz.github.io",
+      "strict_min_version": "128.0"
+    }
+  }
+}

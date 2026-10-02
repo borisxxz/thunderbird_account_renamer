@@ -1,0 +1,23 @@
+# CNB 云原生构建（https://cnb.cool）
+main:
+  push:
+    - docker:
+        image: node:20
+      stages:
+        - name: package check
+          script: npx --yes web-ext@8 build
+
+$:
+  tag_push:
+    - docker:
+        image: node:20
+      stages:
+        - name: create release
+          type: git:release
+        - name: package zip
+          script: npx --yes web-ext@8 build
+        - name: upload zip to release
+          image: cnbcool/attachments:latest
+          settings:
+            attachments:
+              - "web-ext-artifacts/*.zip"
