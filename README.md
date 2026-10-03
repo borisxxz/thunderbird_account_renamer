@@ -3,7 +3,7 @@
 **[English](./README.en.md)** | 中文
 
 ![Thunderbird](https://img.shields.io/badge/Thunderbird-128%2B-%230F8FF?logo=thunderbird&logoColor=white)
-![Version](https://img.shields.io/badge/version-0.0.1-indigo)
+![Version](https://img.shields.io/badge/version-0.0.2-indigo)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 > Thunderbird 附加组件：在文件夹面板按 **F2** 快速重命名账户名称；右键重命名文件夹 / 复制邮箱地址。

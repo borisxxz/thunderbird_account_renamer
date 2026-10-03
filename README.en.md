@@ -3,7 +3,7 @@
 English | **[中文](./README.md)**
 
 ![Thunderbird](https://img.shields.io/badge/Thunderbird-128%2B-%230F8FF?logo=thunderbird&logoColor=white)
-![Version](https://img.shields.io/badge/version-0.0.1-indigo)
+![Version](https://img.shields.io/badge/version-0.0.2-indigo)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 > A Thunderbird add-on: press **F2** in the folder pane to rename an account's display name; right-click to rename folders or copy the account's email address.
